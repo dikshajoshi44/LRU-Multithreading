@@ -1,4 +1,4 @@
-package FinalLRU;
+package FinalLRU.DTO;
 
 
 import lombok.Getter;
