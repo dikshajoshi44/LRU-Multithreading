@@ -1,5 +1,8 @@
 package FinalLRU;
 
+import FinalLRU.Enum.CacheTypes;
+import FinalLRU.Service.CachingRuleFactory;
+import FinalLRU.Service.CachingService;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,21 +12,20 @@ public class DriverClass {
 
     public static void main(String[] args){
 
-        LRUCache cache = LRUCache.getInstance();
+        CachingRuleFactory ruleFactory = CachingRuleFactory.getInstance();
+        CachingService cacheType = ruleFactory.getCachingTechniqueType(CacheTypes.LRU);
 
-        cache.putKey("1", "100");
-        cache.putKey("10", "1000");
-        cache.putKey("3", "10000");
-        cache.putKey("4", "10000");
-        cache.putKey("3", "1000000");
-        cache.putKey("10", "99");
-        cache.putKey("1", "98");
-//        cache.putKey("9", "97");
+        cacheType.putKey("1", "100");
+        cacheType.putKey("10", "1000");
+        cacheType.putKey("3", "10000");
+        cacheType.putKey("4", "10000");
+        cacheType.putKey("3", "1000000");
+        cacheType.putKey("10", "99");
+        cacheType.putKey("1", "98");
 
-
-        System.out.println(cache.getKey("1"));
-        System.out.println(cache.getKey("10"));
-        System.out.println(cache.getKey("3"));
+        System.out.println(cacheType.getKey("1"));
+        System.out.println(cacheType.getKey("10"));
+        System.out.println(cacheType.getKey("3"));
 
 
 

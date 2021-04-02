@@ -1,5 +1,6 @@
-package FinalLRU;
+package FinalLRU.Service;
 
+import FinalLRU.DTO.Node;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,7 +9,7 @@ import java.util.Map;
 
 @Getter
 @Setter
-public class LRUCache {
+public class LRUCache implements CachingService {
 
     private static LRUCache instance;
     private final Map<String, Node> map;
