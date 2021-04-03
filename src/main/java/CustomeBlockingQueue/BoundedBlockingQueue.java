@@ -1,6 +1,4 @@
-package com.multithreading;
-
-import com.sun.org.apache.regexp.internal.RE;
+package CustomeBlockingQueue;
 
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
