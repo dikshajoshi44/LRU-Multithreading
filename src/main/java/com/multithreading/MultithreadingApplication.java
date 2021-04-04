@@ -37,7 +37,6 @@ class Shopper extends Thread{
 //		countGarlic++;
 //	}
 
-
 	ReentrantLock lock = new ReentrantLock();
 	static int garlicCount;
 	static int onionCount;
