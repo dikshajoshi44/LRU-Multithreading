@@ -22,6 +22,9 @@ public class DriverClass {
         cacheType.putKey("3", "1000000");
         cacheType.putKey("10", "99");
         cacheType.putKey("1", "98");
+        cacheType.putKey("1", "100");
+        cacheType.putKey("10", "100");
+        cacheType.putKey("3", "100");
 
         System.out.println(cacheType.getKey("1"));
         System.out.println(cacheType.getKey("10"));

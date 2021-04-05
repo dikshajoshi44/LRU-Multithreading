@@ -83,7 +83,6 @@ public class Twitter {
         while(!recentTweetsMinHeap.isEmpty()){
             finalTweets.add(0, recentTweetsMinHeap.poll().id);
         }
-
         return finalTweets;
     }
 

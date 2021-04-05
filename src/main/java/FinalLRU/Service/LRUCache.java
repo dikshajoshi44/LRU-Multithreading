@@ -41,7 +41,7 @@ public class LRUCache implements CachingService {
 
     public void putKey(String key, String value){
 
-        if(map.containsKey(key)){
+        if(!map.containsKey(key)){
 
             Node newNode = new Node(key, value);
             map.put(key, newNode);
