@@ -1,5 +1,7 @@
 package CustomeBlockingQueue;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -107,7 +109,7 @@ class CustomBlockingQueue{
                 takeIndex = 0;
             }
 
-            conditionConsumer.signal();
+            conditionProducer.signal();
             return item;
 
         } finally {
@@ -122,22 +124,31 @@ class BlockingQueueDemo{
 
         CustomBlockingQueue blockingQueue = new CustomBlockingQueue(10);
 
-        Consumer consumerThread3 = new Consumer("consume3r", blockingQueue);
-        Producer producerThread1 = new Producer("producer1", blockingQueue);
-        Consumer consumerThread1 = new Consumer("consumer1", blockingQueue);
-        Consumer consumerThread2 = new Consumer("consume2r", blockingQueue);
-        Consumer consumerThread4 = new Consumer("consume4r", blockingQueue);
+        ExecutorService pool = Executors.newFixedThreadPool(2);
 
-        producerThread1.start();
-        consumerThread1.start();
-        consumerThread2.start();
-//        consumerThread3.start();
-        consumerThread4.start();
+        for(int i = 0; i < 5; i++){
+            pool.execute(new Consumer("consumer_" + i, blockingQueue));
+            pool.execute(new Producer("producer_" + i, blockingQueue));
+        }
 
-        producerThread1.join();
-        consumerThread1.join();
-        consumerThread2.join();
-        consumerThread4.join();
+        pool.shutdown();
+
+//        Consumer consumerThread3 = new Consumer("consume3r", blockingQueue);
+//        Producer producerThread1 = new Producer("producer1", blockingQueue);
+//        Consumer consumerThread1 = new Consumer("consumer1", blockingQueue);
+//        Consumer consumerThread2 = new Consumer("consume2r", blockingQueue);
+//        Consumer consumerThread4 = new Consumer("consume4r", blockingQueue);
+//
+//        producerThread1.start();
+//        consumerThread1.start();
+//        consumerThread2.start();
+////        consumerThread3.start();
+//        consumerThread4.start();
+//
+//        producerThread1.join();
+//        consumerThread1.join();
+//        consumerThread2.join();
+//        consumerThread4.join();
 
 
     }

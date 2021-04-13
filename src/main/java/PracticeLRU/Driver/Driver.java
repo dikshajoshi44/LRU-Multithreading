@@ -7,6 +7,9 @@ public class Driver {
     public static void main(String args[]){
 
         LRUCache cache = LRUCache.getInstance();
+        String eta = "1";
+        String unit = "1".equalsIgnoreCase(eta) ? "min" : "mins";
+        System.out.println(unit);
 
 
         cache.putkey("1", "100");
