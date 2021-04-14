@@ -74,7 +74,9 @@ public class PubSubService {
 
                 Set<Subscriber> subscribersOfTopic = this.topicWiseSubscribers.get(topic);
                 if(!subscribersOfTopic.isEmpty()) {
-                    System.out.println("Subscriber eating a message " + message.getMessage() + " sub name " + sub.getNname());
+                    for (Subscriber elementSub : subscribersOfTopic) {
+                        System.out.println("Subscriber eating a message " + message.getMessage() + " sub name " + elementSub.getNname());
+                    }
                 }else{
                     System.out.println(sub + "dont have any topic to eat, please send next ");
                 }
