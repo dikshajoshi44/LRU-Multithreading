@@ -66,12 +66,18 @@ public class PubSubService {
     public void subscribeMessage(Subscriber sub){
 
         if(this.blockingQueue.isEmpty() || this.blockingQueue == null){
-            System.out.println("No messages from publishers to display");
+            System.out.println("No messages from publishers to display ");
         }else{
             while(!this.blockingQueue.isEmpty()){
                 MessagePB message = this.blockingQueue.remove();
                 String topic = message.getTopic();
-                System.out.println("Subcriber eating a message" + message.getMessage() + "sub name " + sub.getNname());
+
+                Set<Subscriber> subscribersOfTopic = this.topicWiseSubscribers.get(topic);
+                if(!subscribersOfTopic.isEmpty()) {
+                    System.out.println("Subscriber eating a message " + message.getMessage() + " sub name " + sub.getNname());
+                }else{
+                    System.out.println(sub + "dont have any topic to eat, please send next ");
+                }
             }
         }
 //        lock.lock();
