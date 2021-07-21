@@ -26,21 +26,24 @@ public class DriverClass {
 
         ExecutorService pool = Executors.newFixedThreadPool(2);
 
+        pool.submit(sub1);
+        pool.submit(sub2);
+        pool.submit(sub3);
 
         for(int i = 0; i < 2; i++) {
 
             MessagePB message1 = new MessagePB("JAVA", "This is a java message_______" +i);
             MessagePB message2 = new MessagePB("PYTHON", "This is a python message________" + i);
 
+//            pool.submit(sub1);
+//            pool.submit(sub2);
+//            pool.submit(sub3);
+
             pool.submit((new Publisher("javaPub", message1)));
             pool.submit((new Publisher("javaPub2", message1)));
             pool.submit((new Publisher("javaPub3", message1)));
             pool.submit((new Publisher("javaPub4", message1)));
             pool.submit(new Publisher("pythonPub", message2));
-
-            pool.submit(sub1);
-            pool.submit(sub2);
-            pool.submit(sub3);
         }
 
         pool.shutdown();

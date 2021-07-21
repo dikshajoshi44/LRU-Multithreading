@@ -133,11 +133,11 @@ class BlockingQueueDemo{
 
         pool.shutdown();
 
-//        Consumer consumerThread3 = new Consumer("consume3r", blockingQueue);
-//        Producer producerThread1 = new Producer("producer1", blockingQueue);
-//        Consumer consumerThread1 = new Consumer("consumer1", blockingQueue);
-//        Consumer consumerThread2 = new Consumer("consume2r", blockingQueue);
-//        Consumer consumerThread4 = new Consumer("consume4r", blockingQueue);
+        Consumer consumerThread3 = new Consumer("consume3r", blockingQueue);
+        Producer producerThread1 = new Producer("producer1", blockingQueue);
+        Consumer consumerThread1 = new Consumer("consumer1", blockingQueue);
+        Consumer consumerThread2 = new Consumer("consume2r", blockingQueue);
+        Consumer consumerThread4 = new Consumer("consume4r", blockingQueue);
 //
 //        producerThread1.start();
 //        consumerThread1.start();
