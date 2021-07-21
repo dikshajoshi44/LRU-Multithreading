@@ -13,7 +13,7 @@ public class LRUCache implements CachingService {
 
     private static LRUCache instance;
     private final Map<String, Node> map;
-    private static int capacity = 7;
+    private static int capacity = 2;
     private Node head = null;
     private Node tail = null;
 
